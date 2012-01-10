@@ -7,7 +7,7 @@ module Delocalize
     REGEXPS = {
       '%B' => "(#{Date::MONTHNAMES.compact.join('|')})",      # long month name
       '%b' => "(#{Date::ABBR_MONTHNAMES.compact.join('|')})", # short month name
-      '%m' => "(\\d{2})",                                     # numeric month
+      '%m' => "(\\d{1,2})",                                     # numeric month
       '%A' => "(#{Date::DAYNAMES.join('|')})",                # full day name
       '%a' => "(#{Date::ABBR_DAYNAMES.join('|')})",           # short day name
       '%Y' => "(\\d{4})",                                     # long year
@@ -16,7 +16,8 @@ module Delocalize
       '%d' => "(\\d{2})",                                     # full day
       '%H' => "(\\d{2})",                                     # hour (24)
       '%M' => "(\\d{2})",                                     # minute
-      '%S' => "(\\d{2})"                                      # second
+      '%S' => "(\\d{2})",                                     # second
+      '%d' => "(\\d{1,2})"                                    # day
     }
 
     class << self
