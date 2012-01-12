@@ -10,11 +10,10 @@ module Delocalize
       '%m' => "(\\d{1,2})",                                   # numeric month
       '%A' => "(#{Date::DAYNAMES.join('|')})",                # full day name
       '%a' => "(#{Date::ABBR_DAYNAMES.join('|')})",           # short day name
-      '%d' => "(\\d{1,2})",                                   # numeric day
       '%Y' => "(\\d{4})",                                     # long year
       '%y' => "(\\d{2})",                                     # short year
       '%e' => "(\\s\\d|\\d{2})",                              # short day
-      '%d' => "(\\d{2})",                                     # full day
+      '%d' => "(\\d{1,2})",                                   # full day
       '%H' => "(\\d{2})",                                     # hour (24)
       '%M' => "(\\d{2})",                                     # minute
       '%S' => "(\\d{2})"                                      # second
