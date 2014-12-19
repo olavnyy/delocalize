@@ -51,7 +51,9 @@ ActiveRecord::Base.class_eval do
     old != value
   end
 
-  def define_method_attribute=(attr_name)
+  protected
+  
+  def self.define_method_attribute=(attr_name)
     if create_time_zone_conversion_attribute?(attr_name, columns_hash[attr_name])
       method_body, line = <<-EOV, __LINE__ + 1
         def #{attr_name}=(original_time)
