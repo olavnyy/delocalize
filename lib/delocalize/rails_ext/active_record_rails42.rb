@@ -97,3 +97,11 @@ module ActiveRecord
     end
   end
 end
+
+module ActiveRecord
+  class Attribute
+    def value_before_type_cast
+      type.number? ? ::Numeric.parse_localized(@value_before_type_cast) : @value_before_type_cast
+    end
+  end
+end
