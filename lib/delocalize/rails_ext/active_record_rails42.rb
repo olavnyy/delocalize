@@ -61,13 +61,6 @@ end
 
 module ActiveRecord
   module Type
-    class Decimal
-      def type_cast_from_user(value)
-        value = ::Numeric.parse_localized(value)
-        type_cast(value)
-      end
-    end
-
     class Time
       def type_cast_from_user(value)
         value = ::Time.parse_localized(value) rescue value
