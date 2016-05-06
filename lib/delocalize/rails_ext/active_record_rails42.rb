@@ -61,13 +61,6 @@ end
 
 module ActiveRecord
   module Type
-    class Decimal
-      def type_cast_from_user(value)
-        value = ::Numeric.parse_localized(value)
-        type_cast(value)
-      end
-    end
-
     class Time
       def type_cast_from_user(value)
         value = ::Time.parse_localized(value) rescue value
@@ -94,6 +87,14 @@ module ActiveRecord
         # TODO: Cache!
         value.to_s !~ /\A\d+#{Regexp.escape(I18n.t(:'number.format.separator'))}?\d*\z/
       end
+    end
+  end
+end
+
+module ActiveRecord
+  class Attribute
+    def value_before_type_cast
+      type.number? ? ::Numeric.parse_localized(@value_before_type_cast) : @value_before_type_cast
     end
   end
 end
