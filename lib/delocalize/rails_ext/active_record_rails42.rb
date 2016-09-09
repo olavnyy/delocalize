@@ -7,11 +7,11 @@ require 'active_record'
 # let's hack into ActiveRecord a bit - everything at the lowest possible level, of course, so we minimalize side effects
 ActiveRecord::ConnectionAdapters::Column.class_eval do
   def date?
-    klass == Date
+    type == Date
   end
 
   def time?
-    klass == Time
+    type == Time
   end
 end
 
