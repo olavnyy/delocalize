@@ -96,10 +96,11 @@ end
 # Without this, in Rails 4.2, Numeric value validation fails with localized format (the value user enters) in non-US format locales.
 # [Because, before Rails 4.2, attribute_before_type_cast returned US-format, but it returns localized format in 4.2.]
 #
-module ActiveRecord
-  class Attribute
-    def value_before_type_cast
-      type.number? && came_from_user? ? ::Numeric.parse_localized(@value_before_type_cast) : @value_before_type_cast
-    end
-  end
-end
+# Commented out due to Rails 5 upgrade
+# module ActiveRecord
+#   class Attribute
+#     def value_before_type_cast
+#       type.number? && came_from_user? ? ::Numeric.parse_localized(@value_before_type_cast) : @value_before_type_cast
+#     end
+#   end
+# end
